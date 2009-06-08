@@ -205,6 +205,12 @@ module Facebooker
       element('stream_publish_response', data).content.strip
     end
   end
+  
+  class StreamAddComment < Parser#:nodoc:
+    def self.process(data)
+      element('stream_addComment_response', data).content.strip
+    end
+  end  
 
   class RegisterTemplateBundle < Parser#:nodoc:
     def self.process(data)
@@ -627,6 +633,7 @@ module Facebooker
       'facebook.photos.addTag' => AddTags,
       'facebook.photos.upload' => UploadPhoto,
       'facebook.stream.publish' => StreamPublish,
+      'facebook.stream.addComment' => StreamAddComment,      
       'facebook.events.get' => EventsGet,
       'facebook.groups.get' => GroupsGet,
       'facebook.events.getMembers' => EventMembersGet,
